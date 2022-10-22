@@ -1,4 +1,10 @@
-import { saludar } from "./js/componentes";
-import "./styles.css";
+// import { saludar } from "./js/componentes";
+// import ROUTER from "./router";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles.sass";
 
-saludar();
+import router from "./router/routes.js";
+
+window.addEventListener("hashchange", () => {
+  router(window.location.hash);
+});
