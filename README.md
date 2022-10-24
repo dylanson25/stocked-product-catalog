@@ -19,12 +19,19 @@ Evaluar los conocimientos, habilidades y destrezas en la programación de aplica
     a.  Ver un listado de todos los productos con sus existencias mostrar (Código del producto, Nombre de producto, número de unidades existentes), pudiendo filtrar por los de una clave de producto.
 
     b. Capturar Inventario:
-       - Código del producto. 
+    
+       - Código del producto.
+       
        - Fecha de captura. 
+       
        - Nombre del Producto. 
+       
        - Concepto “Es una descripción de los productos que entran o salen”. 
+       
        - Tipo de movimiento “Entrada o Salida”. 
+       
        - Unidades “Cantidad de productos que entran o salen, ejemplo 15 es entrada -15 es salida”. 
+
 Si ya existen productos con unidades muestre las unidades existentes, y al capturar las unidades nuevas dependiendo si es entrada o salida haga el ajuste en la interface de usuario visualmente (que le sume o reste a la existente), también si existe esa clave capturada que se traiga el nombre del producto y rellene el campo automáticamente.
 
     c. Consultar existencias de un producto capturando el código de un producto, mostrando como respuesta el nombre del producto y la cantidad de unidades existentes.
