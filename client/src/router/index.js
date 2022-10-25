@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import authRouter from "@/modules/auth/router";
+import myStoreRouter from "@/modules/MyStore/router";
 Vue.use(VueRouter);
 
 const routes = [
@@ -13,6 +14,11 @@ const routes = [
   {
     path: "/auth",
     ...authRouter,
+  },
+  {
+    path: "/MyStore",
+    ...myStoreRouter,
+    // beforeEnter: []
   },
 ];
 
