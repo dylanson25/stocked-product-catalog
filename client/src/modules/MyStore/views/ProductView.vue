@@ -1,85 +1,89 @@
 <template>
-  <form class="container-form" ref="form" @submit.prevent="onSubmit">
-    <section class="form-image w-100">
-      <div class="card">
-        <div class="card-image">
-          <figure class="image">
-            <img
-              :src="
-                product.imagen
-                  ? product.imagen
-                  : 'https://bulma.io/images/placeholders/1280x960.png'
-              "
-              alt="Placeholder image"
-            />
-          </figure>
+  <div>
+    <form class="container-form" ref="form" @submit.prevent="onSubmit">
+      <section class="form-image w-100">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image">
+              <img
+                :src="
+                  product.imagen
+                    ? product.imagen
+                    : 'https://bulma.io/images/placeholders/1280x960.png'
+                "
+                alt="Placeholder image"
+              />
+            </figure>
+          </div>
         </div>
+        <b-field label="Imagen">
+          <b-input
+            v-model="product.imagen"
+            placeholder="Example: http://***"
+            required
+          >
+          </b-input>
+        </b-field>
+      </section>
+      <section class="form-section w-60">
+        <b-field label="Nombre">
+          <b-input v-model="product.nombre" required> </b-input>
+        </b-field>
+        <b-field label="Descripcion">
+          <b-input
+            v-model="product.concepto"
+            maxlength="150"
+            placeholder="Caracteristicas del producto"
+            type="textarea"
+            required
+          >
+          </b-input>
+        </b-field>
+      </section>
+      <section class="form-section w-40">
+        <b-field label="Codigo de barras">
+          <b-input
+            v-model="product.barcode"
+            pattern="[0-9]*"
+            min="13"
+            max="13"
+            placeholder="EX: 0021365485123657"
+            validation-message="Solo se aceptan numeros"
+            required
+          ></b-input>
+        </b-field>
+        <b-field label="Precio de venta">
+          <b-input
+            v-model="product.sale_price"
+            type="number"
+            placeholder="Ex: 24"
+          >
+          </b-input>
+        </b-field>
+        <b-field label="Precio de compra">
+          <b-input
+            v-model="product.purchase_price"
+            type="number"
+            placeholder="Ex: 12"
+          >
+          </b-input>
+        </b-field>
+      </section>
+      <div class="buttons-group w-100">
+        <NewEntryOutModal v-if="!isNew" />
+        <b-button type="is-primary" @click.prevent="onSubmit">
+          {{ isNew ? "Agregar" : "Editar" }}</b-button
+        >
       </div>
-      <b-field label="Imagen">
-        <b-input
-          v-model="product.imagen"
-          placeholder="Example: http://***"
-          required
-        >
-        </b-input>
-      </b-field>
-    </section>
-    <section class="form-section w-60">
-      <b-field label="Nombre">
-        <b-input v-model="product.nombre" required> </b-input>
-      </b-field>
-      <b-field label="Descripcion">
-        <b-input
-          v-model="product.concepto"
-          maxlength="150"
-          placeholder="Caracteristicas del producto"
-          type="textarea"
-          required
-        >
-        </b-input>
-      </b-field>
-    </section>
-    <section class="form-section w-40">
-      <b-field label="Codigo de barras">
-        <b-input
-          v-model="product.barcode"
-          pattern="[0-9]*"
-          min="13"
-          max="13"
-          placeholder="EX: 0021365485123657"
-          validation-message="Solo se aceptan numeros"
-          required
-        ></b-input>
-      </b-field>
-      <b-field label="Precio de venta">
-        <b-input
-          v-model="product.sale_price"
-          type="number"
-          placeholder="Ex: 24"
-        >
-        </b-input>
-      </b-field>
-      <b-field label="Precio de compra">
-        <b-input
-          v-model="product.purchase_price"
-          type="number"
-          placeholder="Ex: 12"
-        >
-        </b-input>
-      </b-field>
-    </section>
-    <div class="buttons-group w-100">
-      <b-button v-if="!isNew" type="is-primary is-light">
-        Entrada / Salida
-      </b-button>
-      <b-button type="is-primary" @click.prevent="onSubmit">
-        {{ isNew ? "Agregar" : "Editar" }}</b-button
-      >
-    </div>
-  </form>
+    </form>
+  </div>
 </template>
 <script>
+import { NewEntryOutModal } from "../components";
 export default {
+  components: {
+    NewEntryOutModal,
+  },
   data() {
     return {
       product: {},
@@ -158,6 +162,10 @@ export default {
     justify-content: flex-end
     .button
       margin: 8px
+    ::v-deep
+      section .button
+        margin: 8px
+
   .w-60
     min-width: calc( 60% - 16px )
   .w-40

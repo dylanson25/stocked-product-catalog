@@ -23,7 +23,7 @@ export default {
   width: 100%
   height: 100%
   .content
-    height: 96%
+    height: 93%
     display: flex
     width: 100%
     ::v-deep

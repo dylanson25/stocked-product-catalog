@@ -87,16 +87,17 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.sidebar-layout .b-sidebar
-  .autocomplete
-    margin-left: 8px
-    margin-right: 8px
-  ::v-deep
-    .sidebar-content
-      box-shadow: none
-      -webkit-box-shadow: none
-      width: 300px
+.sidebar-layout
+  .b-sidebar
+    .autocomplete
+      margin-left: 8px
+      margin-right: 8px
+    ::v-deep
+      .sidebar-content
+        box-shadow: none
+        -webkit-box-shadow: none
+        width: 300px
 .entry-scrollarea
-    height: 100%
+    height: 90%
     overflow: scroll
 </style>
