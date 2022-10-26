@@ -26,6 +26,7 @@ export const updateProduct = (
     }
     callback(result);
   });
+  connection.end();
 };
 /**read querys */
 export const readProduct = (
@@ -41,6 +42,7 @@ export const readProduct = (
     }
     callback(result);
   });
+  connection.end();
 };
 
 export const readUser = (
@@ -59,6 +61,7 @@ export const readUser = (
     }
     callback(result);
   });
+  connection.end();
 };
 /**insert querys */
 export const InsertNewUser = (
@@ -80,6 +83,7 @@ export const InsertNewUser = (
     }
     callback(result);
   });
+  connection.end();
 };
 
 export const InsertNewProduct = (
@@ -108,6 +112,7 @@ export const InsertNewProduct = (
     }
     callback(result);
   });
+  connection.end();
 };
 
 export const InsertNewActivity = (
@@ -133,4 +138,5 @@ export const InsertNewActivity = (
     }
     callback(result);
   });
+  connection.end();
 };
