@@ -1,21 +1,102 @@
 <template>
-  <section class="container">
+  <section id="login">
     <div class="card">
-      <header class="card-header">
-        <p class="card-header-title">Bienvenido !!</p>
-      </header>
       <div class="card-content">
-        <h1>Aqui ira el formulario de login</h1>
+        <h1>Mi tiendita</h1>
+        <form ref="form" @submit.prevent="onSubmit">
+          <b-field label="Correo electronico">
+            <b-input
+              placeholder="Email"
+              v-model="user.email"
+              type="email"
+              icon="email"
+            >
+            </b-input>
+          </b-field>
+          <b-field label="Contraseña">
+            <b-input
+              v-model="user.password"
+              type="password"
+              placeholder="Password reveal input"
+              password-reveal
+            >
+            </b-input>
+          </b-field>
+          <b-checkbox v-model="isChecked">Recordarme</b-checkbox>
+          <b-button type="is-primary" @click="onSubmit" expanded
+            >Iniciar sesión</b-button
+          >
+        </form>
       </div>
-      <footer class="card-footer">
-        <h1>Boton para inicio de secion</h1>
-      </footer>
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      user: {},
+      isChecked: false,
+    };
+  },
+  methods: {
+    async onSubmit() {
+      if (this.validate()) {
+        try {
+          console.log(this.user);
+          this.$router.push({ name: "MyStore" });
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    },
+    resetForm() {
+      this.user = {
+        email: null,
+        password: null,
+      };
+    },
+    validate() {
+      let htmlValidator;
+      if (this.$refs.form) {
+        htmlValidator = this.$refs.form.checkValidity();
+        if (!htmlValidator) this.$refs.form.reportValidity();
+      }
+      return htmlValidator;
+    },
+  },
+};
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+#login
+  align-items: center
+  background-color: #F8F7FD
+  display: flex
+  height: 100%
+  justify-content: center
+  width: 100%
+  .card
+    display: flex
+    justify-content: center
+    border-radius: 30px
+    padding:  20px
+    width: 400px
+    .card-content
+      width: 100%
+      h1
+        text-align: center
+        font-size: 20px
+        font-weight: 700
+        margin-bottom: 16px
+      .b-checkbox
+        margin-top: 16px
+        margin-bottom: 24px
+    .card-footer
+      display: flex
+      justify-content: flex-end
+      margin: 16px
+      .button
+        margin-top: 16px
+</style>
