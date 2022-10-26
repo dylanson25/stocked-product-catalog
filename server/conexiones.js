@@ -1,5 +1,66 @@
 import mysql2 from "mysql2";
 
+export const updateProduct = (
+  connection,
+  data,
+  callback = (result) => {
+    console.log(result);
+  }
+) => {
+  let { id, nombre, sale_price, purchase_price, stock, concepto, barcode } =
+    data;
+  let updateProduct = `UPDATE product SET nombre = ?, sale_price = ?, purchase_price = ?, stock = ?, concepto = ?, barcode = ? WHERE id = ? `;
+  let query = mysql2.format(updateProduct, [
+    nombre,
+    sale_price,
+    purchase_price,
+    stock,
+    concepto,
+    barcode,
+    id,
+  ]);
+  connection.query(query, function (err, result) {
+    if (err) {
+      console.log(err);
+      throw err;
+    }
+    callback(result);
+  });
+};
+/**read querys */
+export const readProduct = (
+  connection,
+  callback = (result) => {
+    console.log(result);
+  }
+) => {
+  connection.query("SELECT * FROM product", function (err, result) {
+    if (err) {
+      console.log(err);
+      throw err;
+    }
+    callback(result);
+  });
+};
+
+export const readUser = (
+  connection,
+  full_name,
+  callback = (result) => {
+    console.log(result);
+  }
+) => {
+  let readUserQuery = "SELECT * FROM user where full_name = ?";
+  let query = mysql2.format(readUserQuery, [full_name]);
+  connection.query(query, function (err, result) {
+    if (err) {
+      console.log(err);
+      throw err;
+    }
+    callback(result);
+  });
+};
+/**insert querys */
 export const InsertNewUser = (
   connection,
   data,

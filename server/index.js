@@ -13,6 +13,9 @@ import {
   InsertNewActivity,
   InsertNewProduct,
   InsertNewUser,
+  readProduct,
+  readUser,
+  updateProduct,
 } from "./conexiones.js";
 const connection = mysql2.createConnection({
   host: process.env.DBHOST,
@@ -49,6 +52,20 @@ connection.connect((err) => {
 //   product_id: 4,
 //   type_activity: 0,
 //   unidades: 5,
+// });
+
+/**read product */
+// readProduct(connection);
+// readUser(connection, "dvillarreal0@ucol.mx");
+/**update product */
+// updateProduct(connection, {
+//   nombre: "Clrets de menta",
+//   sale_price: 2,
+//   purchase_price: 1.5,
+//   stock: 45,
+//   concepto: "Modificado en el server",
+//   barcode: "0012354125214",
+//   id: 4,
 // });
 
 io.on("connection", (socket) => {
