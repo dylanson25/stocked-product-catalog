@@ -1,12 +1,6 @@
 <template>
   <section class="sidebar-layout">
-    <b-sidebar
-      position="static"
-      mobile="reduce"
-      expand-on-hover
-      type="is-light"
-      open
-    >
+    <b-sidebar position="static" mobile="Fullwidth" type="is-light" open>
       <b-menu-list label="Productos"> </b-menu-list>
       <b-autocomplete
         rounded

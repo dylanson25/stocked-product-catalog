@@ -97,7 +97,7 @@ export default {
   },
   methods: {
     async onSubmit() {
-      if (this.validate) {
+      if (this.validate()) {
         try {
           console.log(this.product);
         } catch (error) {
@@ -117,6 +117,7 @@ export default {
       };
     },
     validate() {
+      let htmlValidator;
       if (this.$refs.form) {
         htmlValidator = this.$refs.form.checkValidity();
         if (!htmlValidator) this.$refs.form.reportValidity();
