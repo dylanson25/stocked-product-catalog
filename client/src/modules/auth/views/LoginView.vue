@@ -7,7 +7,7 @@
           <b-field label="Correo electronico">
             <b-input
               placeholder="Email"
-              v-model="user.email"
+              v-model="user.full_name"
               type="email"
               icon="email"
             >
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -40,12 +41,23 @@ export default {
       isChecked: false,
     };
   },
+  computed: {
+    ...mapGetters("socketio", ["getStatus"]),
+  },
+  watch: {
+    getStatus() {
+      console.log(this.getStatus);
+      if (this.getStatus === "authenticated") {
+        this.$router.push({ name: "MyStore" });
+      }
+    },
+  },
   methods: {
+    ...mapActions("socketio", ["signOrCreateUser"]),
     async onSubmit() {
       if (this.validate()) {
         try {
-          console.log(this.user);
-          this.$router.push({ name: "MyStore" });
+          this.signOrCreateUser(this.user);
         } catch (error) {
           console.log(error);
         }

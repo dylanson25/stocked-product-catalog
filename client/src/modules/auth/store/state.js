@@ -1,5 +1,5 @@
 export default () => ({
   status: "authenticating", // 'authenticated', 'not-authenticated', 'authenticating'
-  name: null,
+  full_name: null,
   idToken: null,
 });

@@ -7,7 +7,7 @@
         </div>
         <b-button
           @click="
-            $router.push({ name: 'product', params: { id: data.barcode } })
+            $router.push({ name: 'product', params: { id: `${data.id}` } })
           "
           type="is-success"
           icon-right="arrow-collapse-right"

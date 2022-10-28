@@ -14,7 +14,7 @@ Vue.use(Buefy);
 //integracion de sockets
 Vue.use(
   new VueSocketIO({
-    connection: SocketIO("http://localhost:3000", {
+    connection: SocketIO("http://localhost:3030", {
       transports: ["websocket", "polling", "flashsocket"],
     }),
     vuex: {

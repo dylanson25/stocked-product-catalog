@@ -8,7 +8,10 @@
             @click="$router.push({ name: 'product-add' })"
             icon-right="clipboard-plus-outline"
           ></b-button>
-          <b-button type="is-danger" icon-right="logout"
+          <b-button
+            @click="$router.push({ name: 'auth' })"
+            type="is-danger"
+            icon-right="logout"
             >Cerrar seción</b-button
           >
         </div>

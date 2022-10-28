@@ -1,8 +1,4 @@
-export const signOrCreateUser = async ({ commit }, user) => {
-  console.log("Crear usario");
-  try {
-    commit("loginUser", user);
-  } catch (error) {
-    console.log(error);
-  }
+export const signOrCreateUser = ({ state, commit }, user) => {
+  console.log(user);
+  console.log(state);
 };

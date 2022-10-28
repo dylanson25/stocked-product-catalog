@@ -32,7 +32,12 @@
               </b-icon>
             </div>
             <b-field label="Cantidad">
-              <b-input type="number" placeholder="Ex: 2" required />
+              <b-input
+                v-model="unidades"
+                type="number"
+                placeholder="Ex: 2"
+                required
+              />
             </b-field>
           </form>
         </div>
@@ -63,6 +68,7 @@
   </section>
 </template>
 <script>
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -98,6 +104,7 @@ export default {
     },
   },
   methods: {
+    ...mapActions("socketio", ["newEntryOut"]),
     onCancel() {
       this.isModalActive = false;
       this.$emit("cancel");
@@ -105,7 +112,13 @@ export default {
     async onSubmit() {
       if (this.validate()) {
         try {
-          console.log(this.product);
+          let type_activity = this.selected === "Entrada" ? 1 : 0;
+          console.log(this.unidades);
+          this.newEntryOut({
+            product_id: this.$route.params.id,
+            type_activity,
+            unidades: this.unidades,
+          });
           this.isModalActive = false;
           this.$emit("cancel");
         } catch (error) {
@@ -126,7 +139,7 @@ export default {
     },
   },
   props: {
-    productId: { type: String, default: null },
+    productId: { type: String, default: "0" },
   },
 };
 </script>

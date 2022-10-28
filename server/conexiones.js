@@ -1,6 +1,6 @@
-import mysql2 from "mysql2";
+const mysql2 = require("mysql2");
 
-export const updateProduct = (
+const updateProduct = (
   connection,
   data,
   callback = (result) => {
@@ -26,10 +26,9 @@ export const updateProduct = (
     }
     callback(result);
   });
-  connection.end();
 };
 /**read querys */
-export const readProduct = (
+const readProduct = (
   connection,
   callback = (result) => {
     console.log(result);
@@ -42,10 +41,9 @@ export const readProduct = (
     }
     callback(result);
   });
-  connection.end();
 };
 
-export const readUser = (
+const readUser = (
   connection,
   full_name,
   callback = (result) => {
@@ -61,10 +59,9 @@ export const readUser = (
     }
     callback(result);
   });
-  connection.end();
 };
 /**insert querys */
-export const InsertNewUser = (
+const InsertNewUser = (
   connection,
   data,
   callback = (result) => {
@@ -83,10 +80,9 @@ export const InsertNewUser = (
     }
     callback(result);
   });
-  connection.end();
 };
 
-export const InsertNewProduct = (
+const InsertNewProduct = (
   connection,
   data,
   callback = (result) => {
@@ -112,10 +108,9 @@ export const InsertNewProduct = (
     }
     callback(result);
   });
-  connection.end();
 };
 
-export const InsertNewActivity = (
+const InsertNewActivity = (
   connection,
   data,
   callback = (result) => {
@@ -138,5 +133,13 @@ export const InsertNewActivity = (
     }
     callback(result);
   });
-  connection.end();
+};
+
+module.exports = {
+  InsertNewActivity,
+  InsertNewProduct,
+  InsertNewUser,
+  readProduct,
+  readUser,
+  updateProduct,
 };
