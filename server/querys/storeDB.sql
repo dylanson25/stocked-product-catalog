@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `id` TINYINT(50) AUTO_INCREMENT NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
+  `imagen` varchar(200) DEFAULT NULL,
   `sale_price` decimal DEFAULT NULL,
   `purchase_price` decimal DEFAULT NULL,
   `stock` int DEFAULT NULL,
@@ -25,7 +26,8 @@ INSERT INTO `product` (
     `purchase_price`,
     `stock`,
     `concepto`,
-    `barcode`
+    `barcode`,
+    `imagen`
   )
 VALUES (
     'Atun',
