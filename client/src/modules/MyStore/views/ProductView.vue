@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <form class="container-form" ref="form" @submit.prevent="onSubmit">
-      <section class="form-image w-100">
+  <form class="container-form" ref="form" @submit.prevent="onSubmit">
+    <div class="w-30">
+      <section class="form-image">
         <div class="card">
           <div class="card-image">
             <figure class="image">
@@ -23,19 +23,9 @@
           required
         />
       </section>
-      <section class="form-section w-60">
-        <Field label="Nombre" v-model="product.nombre" required />
+      <section class="form-section form-container__1">
         <Field
-          label="Descripcion"
-          v-model="product.concepto"
-          maxlength="150"
-          placeholder="Caracteristicas del producto"
-          type="textarea"
-          required
-        />
-      </section>
-      <section class="form-section w-40">
-        <Field
+          class="w-100"
           label="Codigo de barras"
           v-model="product.barcode"
           pattern="[0-9]*"
@@ -48,16 +38,32 @@
         <Field
           label="Precio de venta"
           v-model="product.sale_price"
+          class="w-50"
           type="number"
           placeholder="Ex: 24"
         />
         <Field
           label="Precio de compra"
           v-model="product.purchase_price"
+          class="w-50"
           type="number"
           placeholder="Ex: 12"
         />
       </section>
+    </div>
+    <section class="form-section w-60 form-container__2">
+      <div>
+        <Field class="w-30" label="Nombre" v-model="product.nombre" required />
+        <Field
+          class="w-100"
+          label="Descripcion"
+          v-model="product.concepto"
+          maxlength="150"
+          placeholder="Caracteristicas del producto"
+          type="textarea"
+          required
+        />
+      </div>
       <div class="buttons-group w-100">
         <NewEntryOutModal v-if="!isNew" :productId="this.id" />
         <Button
@@ -66,8 +72,8 @@
           @click.prevent="onSubmit"
         />
       </div>
-    </form>
-  </div>
+    </section>
+  </form>
 </template>
 <script>
 import { Button, Field } from "@/components";
@@ -150,9 +156,10 @@ export default {
 .container-form
   display: flex
   justify-content: center
+  align-items: center
   flex-direction: row
   width: 100%
-  height: 90%
+  height: 100%
   flex-wrap: wrap
   .form-image
     display: flex
@@ -175,20 +182,34 @@ export default {
       section .button
         margin: 8px
 
+  .w-70
+    width: calc( 70% - 16px )
+  .w-50
+    width: calc( 50% - 8px )
   .w-60
-    min-width: calc( 60% - 16px )
-  .w-40
-    min-width: calc( 40% - 16px )
+    width: calc( 60% - 16px )
+  .w-30
+    width: calc( 30% - 16px )
   .w-100
-    min-width: calc( 100% - 16px )
+    width: 100%
+  .form-container__1
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: space-between
+  .form-container__2
+    height: 65%
+    display: flex
+    flex-direction: column
+    justify-content: space-between
 </style>
 <style scoped>
 @media (max-width: 754px) {
-  .container-form .w-60 {
-    min-width: 95%;
+  .container-form .w-30 {
+    width: 100%;
   }
-  .container-form .w-40 {
-    min-width: 95%;
+  .container-form .w-70 {
+    width: 100%;
   }
 }
 </style>
