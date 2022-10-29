@@ -23,9 +23,12 @@
             </b-input>
           </b-field>
           <b-checkbox v-model="isChecked">Recordarme</b-checkbox>
-          <b-button type="is-primary" @click="onSubmit" expanded
-            >Iniciar sesión</b-button
-          >
+          <Button
+            label="Iniciar sesión"
+            type="is-primary"
+            @click="onSubmit"
+            expanded
+          />
         </form>
       </div>
     </div>
@@ -34,7 +37,11 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import { Button } from "@/components";
 export default {
+  components: {
+    Button,
+  },
   data() {
     return {
       user: {},

@@ -71,19 +71,23 @@
       </section>
       <div class="buttons-group w-100">
         <NewEntryOutModal v-if="!isNew" :productId="this.id" />
-        <b-button type="is-primary" @click.prevent="onSubmit">
-          {{ isNew ? "Agregar" : "Editar" }}</b-button
-        >
+        <Button
+          :label="addOrEdit"
+          type="is-primary"
+          @click.prevent="onSubmit"
+        />
       </div>
     </form>
   </div>
 </template>
 <script>
+import { Button } from "@/components";
 import { NewEntryOutModal } from "../components";
 import { mapGetters, mapActions } from "vuex";
 export default {
   components: {
     NewEntryOutModal,
+    Button,
   },
   data() {
     return {
@@ -94,6 +98,9 @@ export default {
     ...mapGetters("socketio", ["getProductById"]),
     isNew() {
       return this.id == "new";
+    },
+    addOrEdit() {
+      return this.isNew ? "Agregar" : "Editar";
     },
   },
   watch: {

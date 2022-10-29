@@ -42,34 +42,35 @@
           </form>
         </div>
         <div class="card-footer">
-          <b-button
+          <Button
+            label="Cerrar"
+            @click.prevent="onCancel"
             class="card-footer-item"
             type="is-danger is-light"
-            @click.prevent="onCancel"
-          >
-            Cerrar
-          </b-button>
-          <b-button
-            v-model="unidades"
+          />
+          <Button
+            label="Aprovar"
             @click.prevent="onSubmit"
             class="card-footer-item"
             type="is-primary"
-            >Aprovar</b-button
-          >
+          />
         </div>
       </div>
     </b-modal>
-    <b-button
-      type="is-primary is-light"
+    <Button
+      label="Entrada / Salida"
       @click.prevent="() => (isModalActive = true)"
-    >
-      Entrada / Salida
-    </b-button>
+      type="is-primary is-light"
+    />
   </section>
 </template>
 <script>
+import { Button } from "@/components";
 import { mapActions } from "vuex";
 export default {
+  components: {
+    Button,
+  },
   data() {
     return {
       type: [

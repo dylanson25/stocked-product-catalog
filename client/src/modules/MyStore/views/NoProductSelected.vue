@@ -3,20 +3,24 @@
     <div class="no-product">
       <h1>No hay producto seleccionado</h1>
       <p>Agregar un producto nuevo</p>
-      <b-button
-        class="is-primary is-light"
-        @click="$router.push({ name: 'product-add' })"
-      >
+      <Button class="is-primary is-light" @click="onNavigation">
         <b-icon icon="clipboard-plus-outline" size="is-medium"> </b-icon>
-      </b-button>
+      </Button>
     </div>
   </div>
 </template>
 <script>
+import { Button } from "@/components";
 import ProductView from "./ProductView.vue";
 export default {
   components: {
     ProductView,
+    Button,
+  },
+  methods: {
+    onNavigation() {
+      this.$router.push({ name: "product-add" });
+    },
   },
   data() {
     return {

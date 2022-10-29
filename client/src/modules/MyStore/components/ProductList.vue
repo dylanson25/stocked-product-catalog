@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import Prduct from "./Product.vue";
+import Product from "./Product.vue";
 import { mapActions, mapGetters } from "vuex";
 export default {
   beforeMount() {
@@ -31,7 +31,7 @@ export default {
   components: {
     Product,
   },
-  computed:
+  computed: {
     ...mapGetters("socketio", ["getProductByterm"]),
     productByterm() {
       return this.getProductByterm(this.term);
@@ -40,10 +40,9 @@ export default {
   methods: {
     ...mapActions("socketio", ["get_products"]),
   },
-
   data() {
     return {
-      term: ""
+      term: "",
       data: [],
     };
   },

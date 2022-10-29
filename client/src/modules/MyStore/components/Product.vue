@@ -5,10 +5,8 @@
         <div class="media-left">
           <p class="title is-5">{{ data.nombre }}</p>
         </div>
-        <b-button
-          @click="
-            $router.push({ name: 'product', params: { id: `${data.id}` } })
-          "
+        <Button
+          @click="onNavigation"
           type="is-success"
           icon-right="arrow-collapse-right"
         />
@@ -41,8 +39,16 @@
 </template>
 
 <script>
+import { Button } from "@/components";
+
 export default {
   name: "Product",
+  components: { Button },
+  methods: {
+    onNavigation() {
+      this.$router.push({ name: "product", params: { id: `${data.id}` } });
+    },
+  },
   data() {
     return {
       data: this.value,
