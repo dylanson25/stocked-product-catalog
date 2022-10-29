@@ -208,7 +208,15 @@ export default {
   .container-form .w-30 {
     width: 100%;
   }
-  .container-form .w-70 {
+  .container-form .w-60 {
+    width: 100%;
+  }
+}
+@media (max-width: 1308px) {
+  .container-form .w-30 {
+    width: 100%;
+  }
+  .container-form .w-60 {
     width: 100%;
   }
 }
