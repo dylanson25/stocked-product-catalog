@@ -1,10 +1,12 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <Button />
+    <h1>home</h1>
   </div>
 </template>
 
 <script>
+import { Button } from "@/components";
 export default {};
 </script>
 
