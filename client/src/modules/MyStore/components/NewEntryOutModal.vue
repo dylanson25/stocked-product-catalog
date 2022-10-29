@@ -12,7 +12,7 @@
         <div class="card-content">
           <form ref="form" @submit.prevent="onSubmit">
             <div class="flex">
-              <b-field class="w-70" label="Tipo de movimiento">
+              <Field class="w-70" label="Tipo de movimiento">
                 <b-select v-model="selected" placeholder="Entrada / salida">
                   <option
                     v-for="option in type"
@@ -22,7 +22,7 @@
                     {{ option.tipo }}
                   </option>
                 </b-select>
-              </b-field>
+              </Field>
               <b-icon
                 class="w-30"
                 :icon="icon.name"
@@ -31,14 +31,13 @@
               >
               </b-icon>
             </div>
-            <b-field label="Cantidad">
-              <b-input
-                v-model="unidades"
-                type="number"
-                placeholder="Ex: 2"
-                required
-              />
-            </b-field>
+            <Field
+              label="Cantidad"
+              v-model="unidades"
+              type="number"
+              placeholder="Ex: 2"
+              required
+            />
           </form>
         </div>
         <div class="card-footer">
@@ -65,11 +64,12 @@
   </section>
 </template>
 <script>
-import { Button } from "@/components";
+import { Button, Field } from "@/components";
 import { mapActions } from "vuex";
 export default {
   components: {
     Button,
+    Field,
   },
   data() {
     return {

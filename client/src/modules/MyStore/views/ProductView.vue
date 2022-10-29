@@ -16,58 +16,47 @@
             </figure>
           </div>
         </div>
-        <b-field label="Imagen">
-          <b-input
-            v-model="product.imagen"
-            placeholder="Example: http://***"
-            required
-          >
-          </b-input>
-        </b-field>
+        <Field
+          label="Imagen"
+          v-model="product.imagen"
+          placeholder="Example: http://***"
+          required
+        />
       </section>
       <section class="form-section w-60">
-        <b-field label="Nombre">
-          <b-input v-model="product.nombre" required> </b-input>
-        </b-field>
-        <b-field label="Descripcion">
-          <b-input
-            v-model="product.concepto"
-            maxlength="150"
-            placeholder="Caracteristicas del producto"
-            type="textarea"
-            required
-          >
-          </b-input>
-        </b-field>
+        <Field label="Nombre" v-model="product.nombre" required />
+        <Field
+          label="Descripcion"
+          v-model="product.concepto"
+          maxlength="150"
+          placeholder="Caracteristicas del producto"
+          type="textarea"
+          required
+        />
       </section>
       <section class="form-section w-40">
-        <b-field label="Codigo de barras">
-          <b-input
-            v-model="product.barcode"
-            pattern="[0-9]*"
-            min="13"
-            max="13"
-            placeholder="EX: 0021365485123657"
-            validation-message="Solo se aceptan numeros"
-            required
-          ></b-input>
-        </b-field>
-        <b-field label="Precio de venta">
-          <b-input
-            v-model="product.sale_price"
-            type="number"
-            placeholder="Ex: 24"
-          >
-          </b-input>
-        </b-field>
-        <b-field label="Precio de compra">
-          <b-input
-            v-model="product.purchase_price"
-            type="number"
-            placeholder="Ex: 12"
-          >
-          </b-input>
-        </b-field>
+        <Field
+          label="Codigo de barras"
+          v-model="product.barcode"
+          pattern="[0-9]*"
+          min="13"
+          max="13"
+          placeholder="EX: 0021365485123657"
+          validation-message="Solo se aceptan numeros"
+          required
+        />
+        <Field
+          label="Precio de venta"
+          v-model="product.sale_price"
+          type="number"
+          placeholder="Ex: 24"
+        />
+        <Field
+          label="Precio de compra"
+          v-model="product.purchase_price"
+          type="number"
+          placeholder="Ex: 12"
+        />
       </section>
       <div class="buttons-group w-100">
         <NewEntryOutModal v-if="!isNew" :productId="this.id" />
@@ -81,13 +70,14 @@
   </div>
 </template>
 <script>
-import { Button } from "@/components";
+import { Button, Field } from "@/components";
 import { NewEntryOutModal } from "../components";
 import { mapGetters, mapActions } from "vuex";
 export default {
   components: {
     NewEntryOutModal,
     Button,
+    Field,
   },
   data() {
     return {

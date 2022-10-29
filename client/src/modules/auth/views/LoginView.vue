@@ -4,24 +4,22 @@
       <div class="card-content">
         <h1>Mi tiendita</h1>
         <form ref="form" @submit.prevent="onSubmit">
-          <b-field label="Correo electronico">
-            <b-input
-              placeholder="Email"
-              v-model="user.full_name"
-              type="email"
-              icon="email"
-            >
-            </b-input>
-          </b-field>
-          <b-field label="Contraseña">
-            <b-input
-              v-model="user.password"
-              type="password"
-              placeholder="Password reveal input"
-              password-reveal
-            >
-            </b-input>
-          </b-field>
+          <Field
+            label="Correo electronico"
+            placeholder="Email"
+            v-model="user.full_name"
+            type="email"
+            icon="email"
+            required
+          />
+          <Field
+            label="Contraseña"
+            v-model="user.password"
+            type="password"
+            placeholder="Password reveal input"
+            password-reveal
+            required
+          />
           <b-checkbox v-model="isChecked">Recordarme</b-checkbox>
           <Button
             label="Iniciar sesión"
@@ -37,10 +35,11 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import { Button } from "@/components";
+import { Button, Field } from "@/components";
 export default {
   components: {
     Button,
+    Field,
   },
   data() {
     return {
