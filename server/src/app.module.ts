@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: [`.development.env`],
+      envFilePath: [`.${process.env.NODE_ENV}.env`],
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
