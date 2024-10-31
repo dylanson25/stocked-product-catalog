@@ -33,4 +33,5 @@ networks:
   backend:
 
 volumes:
+  server:
   database:
