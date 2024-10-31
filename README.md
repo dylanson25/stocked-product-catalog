@@ -52,9 +52,78 @@ La primera versión de este proyecto fue realizada hace 2 años como parte de un
 
 ### Instalación
 
-### Configuración
+## Configuración
 
-### Base de Datos
+**SERVER**
+
+1. Configuracion de Variables de entorno para el Docker con Mysql:
+   * Copia el archivo `.env.example` y renómbralo a `.env`
+   * En el archivo `.env`, configura las siguientes variables:
+     * `MYSQL_PORT`: Puerto en el cual se expondrá MySQL (e.g., 3306).
+     * `MYSQL_ROOT_PASSWORD`: Contraseña para el usuario root de MySQL.
+     * `MYSQL_DATABASE`: Nombre de la base de datos que utilizará la aplicación.
+
+**Ejemplo**
+
+```
+MYSQL_PORT=3306
+MYSQL_ROOT_PASSWORD=root
+MYSQL_DATABASE=storeDB
+```
+
+2. Configuracion de variables de entorno para levantar el la API con NestJs
+   * Copia el archivo `.example.development.env` y renómbralo a `development.env`
+   * En el archivo de `development.env`  Configura las siguientes variables:
+     * `MYSQL_PORT`: Puerto para la coneccion con Mysql
+     * `DATABASE_USER`: Usuario que se usara para la coneccion
+     * `DATABASE_PASSWORD`: Contraseña del usario
+     * `DATABASE_HOST-db`: Host del cual se ara la coneccion
+     * `MYSQL_DATABASE`: Nombre de la base de datos
+
+**Ejemplo**
+
+```
+MYSQL_PORT=3306
+DATABASE_USER=root
+DATABASE_PASSWORD=root
+DATABASE_HOST=mysql-db
+MYSQL_DATABASE=storeDB
+```
+
+### Iniciar el enterno de desarrollo
+
+1. Levanta el entorno de desarrollo completo:
+
+* Usa el comando a continuación para iniciar la aplicación y la base de datos en contenedores:
+
+```
+npm run setup:dev
+```
+
+* Este comando levanta ambos servicios, `nest-app` (la aplicación NestJS) y `mysql-db` (la base de datos MySQL).
+
+* Esta opcion permite permite desarrollo atraves de docker, los cambios que se hagan dentro de la aplicacion se veran reflejados de manera sincrona.
+
+2. Ejecutar solo la base de datos (opcional):
+   Si necesitas levantar únicamente el servicio de la base de datos, usa:
+
+```
+npm run setup:mysql-d
+```
+
+* **Nota:** Al levantar el servicio de esta manera se crearan las tablas y la informacion dentro el query que se encuentra dendto de `./mysql-dump`
+
+3. Detener el entorno de desarrollo
+
+* Para detener el entorno de desarrollo, ejecuta:
+
+```
+npm run docker:down
+```
+
+4. Estructura de los servicios:
+   * `nest-app`: La aplicación backend, accesible en el puerto configurado en el proyecto (por defecto, 3000).
+   * `mysql-db`: Base de datos MySQL, accesible en el puerto definido en MYSQL\_PORT.
 
 ***
 
