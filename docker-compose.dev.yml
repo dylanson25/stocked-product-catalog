@@ -1,0 +1,36 @@
+version: "3"
+services:
+  nest-app:
+    container_name: nest-app
+    build:
+      context: ./server
+      dockerfile: dockerfile.dev
+    ports:
+      - "3000:3000"
+    networks:
+      - backend
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./server:/home/app
+      - /home/app/node_modules
+  mysql-db:
+    container_name: mysql-db
+    image: mysql:9.1
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    ports:
+      - "${MYSQL_PORT}:3306"
+    volumes:
+      - ./database:/var/lib/mysql
+      - ./mysql-dump:/docker-entrypoint-initdb.d
+    networks:
+      - backend
+
+networks:
+  backend:
+
+volumes:
+  database:
