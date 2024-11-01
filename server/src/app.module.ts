@@ -1,6 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AppResolver } from './app.resolver';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
+import { join } from 'path';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -20,8 +26,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         synchronize: true,
       }),
     }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      driver: ApolloDriver,
+      playground: false,
+      plugins: [ApolloServerPluginLandingPageLocalDefault()],
+    }),
   ],
-  controllers: [],
-  providers: [],
+  providers: [AppResolver],
 })
 export class AppModule {}
