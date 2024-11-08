@@ -1,9 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-	<main class="flex h-screen w-screen">
+	<main data-mode="dark" class="flex h-screen w-screen">
 		<div
-			class="m-auto max-w-md overflow-hidden rounded-xl bg-white shadow-md md:max-w-2xl"
+			class="dark:bg-primary-950 dark:text-primary-100 m-auto max-w-md overflow-hidden rounded-xl bg-white shadow-md md:max-w-2xl"
 		>
 			<div class="md:flex">
 				<div class="md:flex-shrink-0">
