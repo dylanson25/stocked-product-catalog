@@ -1,9 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-	<main class="flex w-screen h-screen">
+	<main class="flex h-screen w-screen">
 		<div
-			class="max-w-md m-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl"
+			class="m-auto max-w-md overflow-hidden rounded-xl bg-white shadow-md md:max-w-2xl"
 		>
 			<div class="md:flex">
 				<div class="md:flex-shrink-0">
@@ -15,19 +15,27 @@
 				</div>
 				<div class="p-8">
 					<div
-						class="uppercase tracking-wide text-sm text-indigo-500 font-semibold"
+						class="text-sm font-semibold uppercase tracking-wide text-indigo-500"
 					>
 						Case study
 					</div>
 					<a
 						href="#"
-						class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"
+						class="mt-1 block text-lg font-medium leading-tight text-black hover:underline"
 						>Finding customers for your new business</a
 					>
 					<p class="mt-2 text-gray-500">
 						Getting a new business off the ground is a lot of hard work. Here
 						are five ideas you can use to find your first customers.
 					</p>
+					<ul>
+						<li class="text-primary-500">primary</li>
+						<li class="text-secondary-500">secondary</li>
+						<li class="text-success-500">success</li>
+						<li class="text-info-500">info</li>
+						<li class="text-warning-500">warning</li>
+						<li class="text-danger-500">danger</li>
+					</ul>
 				</div>
 			</div>
 		</div>
