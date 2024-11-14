@@ -16,20 +16,25 @@ const buttonComponent =   function({ addComponents, addUtilities, theme, e}) {
     acc[`&.btn--${e(key)}`] = {
       backgroundColor: colors[key]['400'],
       color: white,
+      borderColor: 'transparent',
       '&:hover': {
         filter: 'brightness(95.5%)',
       },
       '&:focus': {
         boxShadow: `0 0 0 .25rem ${colors[key]['50']}`,
+      },
+      '&.btn--outlined':{
+        borderColor: colors[key]['500'],
+        backgroundColor: 'transparent',
+        color: colors[key]['500']
       }
-
     };
 
     return acc;
   }, {})
 
   addUtilities(btnSizeVariants, ['responsive'])
-  console.log(btnColorsVariants)
+
   addComponents({
     '.btn': {
 	    background: 'transparent',
