@@ -22,6 +22,7 @@ const buttonComponent = function ({ addComponents, addUtilities, theme, e }) {
 			},
 			'&:focus': {
 				boxShadow: `0 0 0 .25rem ${colors[key]['50']}`,
+				outline: 0,
 			},
 			'&.btn--outlined': {
 				borderColor: colors[key]['500'],
@@ -36,6 +37,10 @@ const buttonComponent = function ({ addComponents, addUtilities, theme, e }) {
 				borderColor: 'transparent',
 				backgroundColor: white,
 				color: colors[key]['500'],
+			},
+			'&.--loading': {
+				colors: 'transparent !importand',
+				pointerEvents: 'none',
 			},
 		};
 
@@ -71,6 +76,10 @@ const buttonComponent = function ({ addComponents, addUtilities, theme, e }) {
 				pointerEvents: 'none',
 				cursor: 'not-allowed',
 				opacity: '0.5',
+			},
+			'&:focus': {
+				boxShadow: `0 0 0 .25rem ${colors.gray['100']}`,
+				outline: 0,
 			},
 			...btnColorsVariants,
 		},
