@@ -65,6 +65,10 @@ const rootClasses = defineClasses(
 	['expandedClass', 'w-full', null, computed(() => props.expanded)],
 	['roundedClass', 'rounded-full', null, computed(() => props.rounded)],
 );
+const labelClasses = defineClasses(
+	['labelClass', 'btn__label'],
+	['roundedClass', 'w-full', null, true],
+);
 </script>
 <template>
 	<component
@@ -73,7 +77,7 @@ const rootClasses = defineClasses(
 		:type="computedNativeType"
 		:class="rootClasses"
 	>
-		<span
+		<span :class="labelClasses"
 			><slot>{{ label }}</slot></span
 		>
 	</component>
